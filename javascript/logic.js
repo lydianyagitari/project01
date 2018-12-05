@@ -62,7 +62,7 @@ var currArtist="";
 
 
 //grabbing the artist from html
-//$("#lyrics-tab").on("click",function(event){   event.preventDefault() })
+//$("#add").on("click",function(event){   event.preventDefault() })
 $("#add").on("click",function(event){
   event.preventDefault()
   console.log("here")
