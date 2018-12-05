@@ -125,7 +125,7 @@ function music(mp3path){
   // $('#playDiv').append(
   
   $('#playDiv').append(
-    "<audio id='myAudio' controls autoplay><source src='"+mp3path+"' type='audio/mpeg'> Your browser does not support the audio element.</audio>
+    "<audio id='myAudio' controls autoplay><source src='"+mp3path+"' type='audio/mpeg'></audio>
     //<p> <strong>Download Audio:</strong>
  //<a href="path-to-m4a.m4a">M4A</a>,
  //<a href="path-to-oga.oga">OGG</a>
