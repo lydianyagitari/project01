@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+
+
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
+    <title>Fresh MP3</title>
+
+    <!--CSS RESET-->
+    <link rel="css/reset.css">
+
+    <!-- GOOGLE FONTS-->
+    <link href="https://fonts.googleapis.com/css?family=Courgette|Permanent+Marker" rel="stylesheet">
+    
+    <!--BOOTSTRAP-->
+
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
+    <!--CSS LINK-->
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+
+</head>
+
+<body class="bg" background="Images/background1.jpg">
+
+<div class="container">
+    <div class="jumbotron">
+        <h1> MP3</h1>
+        <h4>Simple musik player</h4>
+    </br></br>
+        <!--Search Parameters Div-->
+        <div class="card" id="parametersDiv">
+            <div class="card-header">
+            </div>
+            <div class="card-body">Search for your favorite artist or Song
+                <form>
+                    <div class="form-group">
+                        <!--form setup for user artist entry-->
+                        <label for="enterArtist"></label>
+                        <input type="artist" class="form-control" id="inputArtist" placeholder="Artist Name"> </br>
+                        <input type="artist" class="form-control" id="inputSong" placeholder="Song Name"> </br>
+                    </div>
+                                
+                    <button class="btn btn-primary" id="add">Submit</button>
+                </form>           
+            </div>
+        </div>
+        <br>
+
+        <!--Media Player Div-->
+        <div class="wrapper">
+          <h3>Media Player</h3>
+            <div class="wrapper" id="playDiv">
+            </div>
+        </div>
+    </br>
+    
+              
+               <div id="topCharts" class="container tab-pane fade"><br>
+                <div id="charts" class="container tab-pane active"><br>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <!-- end container & jumbotron-->
+    </div>
+</div>
+    
+    <!--footer-->
+    <footer class="footer">
+        <center>Copyright 2018</center>
+    </footer>
+
+  
+    <!-- deezers -->
+    <script src="https://e-cdns-files.dzcdn.net/js/min/dz.js"></script>
+    <!-- FIREBASE -->
+    <script src="https://www.gstatic.com/firebasejs/5.5.7/firebase.js"></script>
+
+    <!-- MOMENTJS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+
+    <!-- JAVASCRIPT-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="javascript/logic.js"></script>
+    
+   
+
+
+</body>
+
+</html>

@@ -1,0 +1,34 @@
+
+#background {
+  background-size: cover;
+  height: 100%;
+  
+}
+
+
+body {
+	text-align: center;
+}
+
+h1 {
+	font-family: 'Permanent Marker';
+}
+
+h4 {
+	font-family: 'Courgette';
+}
+
+h3 {
+	font-family: 'Permanent Marker';
+}
+
+.jumbotron{
+  opacity: 0.98;
+  padding-top: 10px;
+}
+
+textarea {
+  resize: none;
+    border: none;
+    text-align: center;
+}
