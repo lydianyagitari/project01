@@ -126,10 +126,10 @@ function music(mp3path){
   
   $('#playDiv').append(
     "<audio id='myAudio' controls autoplay><source src='"+mp3path+"' type='audio/mpeg'></audio>
-    //<p> <strong>Download Audio:</strong>
- //<a href="path-to-m4a.m4a">M4A</a>,
- //<a href="path-to-oga.oga">OGG</a>
- //</p>"
+    <button onclick="document.getElementById('myAudio').play()">Play Music</button>
+<button onclick="document.getElementById('myAudio').pause()">Pause Music</button>
+<button onclick="document.getElementById('myAudio').pause(); document.getElementById('myAudio').currentTime = 0;">Stop Music</button>
+
   ) 
 }
 
