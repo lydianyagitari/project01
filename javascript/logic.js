@@ -33,22 +33,22 @@ $("#add").on("click",function(event){
   var deezerApi; 
   var flag = 0
   if (artist === "" && song === "" ){
-    // console.log("no input")
+    // console.log("undefined search")
     
   }
   else if (artist === ""){
-    // console.log("song only")
+    // console.log("no artist was searched")
      deezerApi = "https://api.deezer.com/search?q=track:"+ '"' + song +'"'
 
   }
   else if (song === ""){
-    // console.log("artist only")
+    // console.log("no song was searched")
      deezerApi = "https://api.deezer.com/search?q=artist:"+ '"' + artist +'"'
   }
   else {
-    // console.log("song & artist")
-    // console.log("artist : " + artist)
-    // console.log("song : " + song)
+    // console.log("search for song & artist")
+    // console.log("artist found : " + artist)
+    // console.log("song found : " + song)
    deezerApi = "https://api.deezer.com/search?q=artist:"+ '"' + artist +'"'  +" track:"+ '"' + song +'"' 
   }
   //console.log(deezerApi)
@@ -88,24 +88,23 @@ function play(a , flag){
   
     playMusic(result, result[counter].preview)
   // console.log (playlistId)
-    //connectionRef.remove()
+    
   })
 
 }
-
+//function that plays music, takes result of search and plays it as MP3
 function playMusic(result, mp3Path){
   
 
   music(mp3Path);
 
   var aud = document.getElementById("myAudio");
-  // vid.onplaying = function() {
-  //   alert("The video is now playing");
+    //   alert("Your music is playing");
   
   aud.onplaying = function() {
       
       currArtist = result[counter].artist.name;
-  currTrack =   result[counter].title;
+      currTrack =   result[counter].title;
     
 };
   
@@ -116,7 +115,13 @@ function music(mp3path){
   // $('#playDiv').append(
   
   $('#playDiv').append(
-    "<audio id='myAudio' controls autoplay><source src='"+mp3path+"' type='audio/mpeg'></audio>"
+    "<audio id='myAudio' controls autoplay><source src='"+mp3path+"' type='audio/mpeg'> Your browser does 
+    not support the audio element.</audio>
+    <p>
+ <strong>Download Audio:</strong>
+ <a href="path-to-m4a.m4a">M4A</a>,
+ <a href="path-to-oga.oga">OGG</a>
+ </p>"
   ) 
 }
 
