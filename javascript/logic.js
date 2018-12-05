@@ -1,20 +1,20 @@
-//firebase
+
   var config = {
-    apiKey: "AIzaSyA_TJoAEYLpbArhLJFEgMeX_BTFwegs36E",
-    authDomain: "project1-e6f89.firebaseapp.com",
-    databaseURL: "https://project1-e6f89.firebaseio.com",
-    projectId: "project1-e6f89",
-    storageBucket: "project1-e6f89.appspot.com",
-    messagingSenderId: "13757979821"
+    apiKey: "AIzaSyDnoIh_ls25YVOg3CkYj2B-OtheE3ds2gg",
+    authDomain: "project-1-1ea90.firebaseapp.com",
+    databaseURL: "https://project-1-1ea90.firebaseio.com",
+    projectId: "project-1-1ea90",
+    storageBucket: "",
+    messagingSenderId: "37482486000"
   };
   firebase.initializeApp(config);
 
 
 var playlistId =[]
 var playlistURL =[]
-var trackName =[]
-var artistName =[]
-var album =[]
+// var trackName =[]
+// var artistName =[]
+// var album =[]
 var year =[]
 var database = firebase.database()
 var a = '/connections_'+ Math.floor(Math.random()*1000)
@@ -25,6 +25,40 @@ var counter=0;
 var result;
 var currTrack="";
 var currArtist="";
+
+// connectedRef.on("value", function(snap){
+//   if (snap.val())
+// the ajax call returns 3 results when we send a request to the API
+// getCharts();
+
+// function getCharts(){
+//    $.ajax({
+//     headers : {"Access-Control-Allow-Methods": "GET, POST, PATCH, PUT, DELETE, OPTIONS"},
+//     url : "http://api.musixmatch.com/ws/1.1/chart.tracks.get?chart_name=top&page=1&page_size=3&country=us&f_has_lyrics=1&apikey=2538b3b1d406a3ddd6b776c21163d924",
+//     method: "GET"
+
+//     //function called after requesting from the API
+//     //a JSON is returned with trackName, album_name and artist_name
+//   }).then(function(response){
+//     var respObject = JSON.parse(response)
+//     var size = respObject.message.body.track_list.length;
+//     $('#chartsValues').empty()
+//     for(var i=0; i < size; i++){
+//       var trackName = respObject.message.body.track_list[i].track.track_name;
+//       var album_name = respObject.message.body.track_list[i].track.album_name;
+//        var artist_name = respObject.message.body.track_list[i].track.artist_name;
+
+//        $("#chartsValues").append(("<tr> " +
+//    " <td > " + trackName +" </td> "+
+//    " <td> " + artist_name +" </td> "+
+//    " <td> " + album_name +" </td> "
+//    ));
+//     }
+    
+
+//   })
+
+// }
 
 
 //grabbing the artist from html
@@ -157,8 +191,7 @@ function writeUserData(playlistURL,trackName,artist,album){
   })
 }
 
-//play again
-
+//
    $('#playAgain').on('click',function(){
     var vid = document.getElementById("myAudio");
     // vid.onplaying = function() {
@@ -171,6 +204,7 @@ function writeUserData(playlistURL,trackName,artist,album){
   
   })
   
+
 
 
 
