@@ -57,7 +57,6 @@ $("#add").on("click",function(event){
 })
 
 
-
 // deezer api
 function play(a , flag){
  
@@ -91,30 +90,17 @@ function play(a , flag){
     //connectionRef.remove()
   })
 
-}
+};
 
-function playMusic(result, mp3Path){
-  
+function playMusic(result, mp3Path){  
 
   music(mp3Path);
-
-  var aud = document.getElementById("myAudio");
-  // vid.onplaying = function() {
-  //   alert("The video is now playing");
   
-  aud.onplaying = function() {
-      
-      currArtist = result[counter].artist.name;
-  currTrack =   result[counter].title;
-    
 };
-  
-}
-//insert media player into html
+//function that will insert media player into html
 function music(mp3path){
   $('#playDiv').empty()
-  // $('#playDiv').append(
-  
+  // the audio control tag and source  
   $('#playDiv').append(
     "<audio id='myAudio' controls autoplay><source src='"+mp3path+"' type='audio/mpeg'></audio>"
   ) 
@@ -128,9 +114,9 @@ function writeUserData(playlistURL,trackName,artist,album){
     artist : artist,
     album : album,
   })
-}
+};
 
-//
+//function that plays a track again when play button is clicked
    $('#playAgain').on('click',function(){
     var aud = document.getElementById("myAudio");
     // 
