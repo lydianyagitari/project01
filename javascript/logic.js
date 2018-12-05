@@ -31,6 +31,7 @@ $("#add").on("click",function(event){
   var artist = $("#inputArtist").val()
   var song = $("#inputSong").val()
   var deezerApi; 
+  //var musicdemonsApi;
   var flag = 0
   if (artist === "" && song === "" ){
     // console.log("undefined search")
@@ -39,37 +40,46 @@ $("#add").on("click",function(event){
   else if (artist === ""){
     // console.log("no artist was searched")
      deezerApi = "https://api.deezer.com/search?q=track:"+ '"' + song +'"'
+    // musicdemonsApi = "https://musicdemons.com/api/v1/song"+ '"' + song + '"'
 
   }
   else if (song === ""){
     // console.log("no song was searched")
      deezerApi = "https://api.deezer.com/search?q=artist:"+ '"' + artist +'"'
+    // musicdemonsApi = "https://musicdemons.com/api/v1/artist"+ '"' + artist + '"'
   }
   else {
     // console.log("search for song & artist")
     // console.log("artist found : " + artist)
     // console.log("song found : " + song)
    deezerApi = "https://api.deezer.com/search?q=artist:"+ '"' + artist +'"'  +" track:"+ '"' + song +'"' 
+    // musicdemonsApi = "https://musicdemons.com/api/v1/artist"+ '"' + artist + '"' +" song"+ '"' + song +'"' 
   }
   //console.log(deezerApi)
+  //console.log(musicdemonsApi)
   play(deezerApi, flag)
+  //play(musicdemonsApi, flag)
   
 })
 
 
 
 // deezer api
+// musicdemonsApi
 function play(a , flag){
  
   
   var deezerApi = a
+  // var musicdemonsApi = a
   console.log("play: " + deezerApi)
+  //console.log("play: " + musicdemonsApi)
   var flag = flag;
   console.log(flag)
 
   $.ajax({
     headers : {"Access-Control-Allow-Methods": "GET, POST, PATCH, PUT, DELETE, OPTIONS"},
     url : deezerApi,
+    //url : musicdemonsApi,
     method: "GET"
 
   }).then(function(response){
@@ -115,13 +125,11 @@ function music(mp3path){
   // $('#playDiv').append(
   
   $('#playDiv').append(
-    "<audio id='myAudio' controls autoplay><source src='"+mp3path+"' type='audio/mpeg'> Your browser does 
-    not support the audio element.</audio>
-    <p>
- <strong>Download Audio:</strong>
- <a href="path-to-m4a.m4a">M4A</a>,
- <a href="path-to-oga.oga">OGG</a>
- </p>"
+    "<audio id='myAudio' controls autoplay><source src='"+mp3path+"' type='audio/mpeg'> Your browser does not support the audio element.</audio>
+    //<p> <strong>Download Audio:</strong>
+ //<a href="path-to-m4a.m4a">M4A</a>,
+ //<a href="path-to-oga.oga">OGG</a>
+ //</p>"
   ) 
 }
 
