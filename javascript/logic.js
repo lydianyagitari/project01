@@ -141,15 +141,10 @@ function playMusic(result, mp3Path){
   //   alert("The video is now playing");
   // };
   vid.onplaying = function() {
-    // alert("The audio has ended");
-    //reading data from firebase
-      var background = result[counter].artist.picture_xl
-    $(".bg").css("background-image", 'url(' + background + ')')
-    
-
+      
       currArtist = result[counter].artist.name;
   currTrack =   result[counter].title;
-    getLyrics(currArtist, currTrack);
+    
 
 
   };
