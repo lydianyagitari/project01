@@ -31,55 +31,45 @@ $("#add").on("click",function(event){
   var artist = $("#inputArtist").val()
   var song = $("#inputSong").val()
   var deezerApi; 
-  //var musicdemonsApi;
   var flag = 0
   if (artist === "" && song === "" ){
-    // console.log("undefined search")
+    // console.log("no input")
     
   }
   else if (artist === ""){
-    // console.log("no artist was searched")
+    // console.log("song only")
      deezerApi = "https://api.deezer.com/search?q=track:"+ '"' + song +'"'
-    // musicdemonsApi = "https://musicdemons.com/api/v1/song"+ '"' + song + '"'
 
   }
   else if (song === ""){
-    // console.log("no song was searched")
+    // console.log("artist only")
      deezerApi = "https://api.deezer.com/search?q=artist:"+ '"' + artist +'"'
-    // musicdemonsApi = "https://musicdemons.com/api/v1/artist"+ '"' + artist + '"'
   }
   else {
-    // console.log("search for song & artist")
-    // console.log("artist found : " + artist)
-    // console.log("song found : " + song)
+    // console.log("song & artist")
+    // console.log("artist : " + artist)
+    // console.log("song : " + song)
    deezerApi = "https://api.deezer.com/search?q=artist:"+ '"' + artist +'"'  +" track:"+ '"' + song +'"' 
-    // musicdemonsApi = "https://musicdemons.com/api/v1/artist"+ '"' + artist + '"' +" song"+ '"' + song +'"' 
   }
   //console.log(deezerApi)
-  //console.log(musicdemonsApi)
   play(deezerApi, flag)
-  //play(musicdemonsApi, flag)
   
 })
 
 
 
 // deezer api
-// musicdemonsApi
 function play(a , flag){
  
   
   var deezerApi = a
-  // var musicdemonsApi = a
   console.log("play: " + deezerApi)
-  //console.log("play: " + musicdemonsApi)
   var flag = flag;
   console.log(flag)
 
   $.ajax({
     headers : {"Access-Control-Allow-Methods": "GET, POST, PATCH, PUT, DELETE, OPTIONS"},
     url : deezerApi,
-    //url : musicdemonsApi,
     method: "GET"
 
   }).then(function(response){
@@ -98,23 +88,24 @@ function play(a , flag){
   
     playMusic(result, result[counter].preview)
   // console.log (playlistId)
-    
+    //connectionRef.remove()
   })
 
 }
-//function that plays music, takes result of search and plays it as MP3
+
 function playMusic(result, mp3Path){
   
 
   music(mp3Path);
 
   var aud = document.getElementById("myAudio");
-    //   alert("Your music is playing");
+  // vid.onplaying = function() {
+  //   alert("The video is now playing");
   
   aud.onplaying = function() {
       
       currArtist = result[counter].artist.name;
-      currTrack =   result[counter].title;
+  currTrack =   result[counter].title;
     
 };
   
@@ -125,11 +116,7 @@ function music(mp3path){
   // $('#playDiv').append(
   
   $('#playDiv').append(
-    "<audio id='myAudio' controls autoplay><source src='"+mp3path+"' type='audio/mpeg'></audio>
-    <button onclick="document.getElementById('myAudio').play()">Play Music</button>
-<button onclick="document.getElementById('myAudio').pause()">Pause Music</button>
-<button onclick="document.getElementById('myAudio').pause(); document.getElementById('myAudio').currentTime = 0;">Stop Music</button>
-
+    "<audio id='myAudio' controls autoplay><source src='"+mp3path+"' type='audio/mpeg'></audio>"
   ) 
 }
 
