@@ -11,11 +11,11 @@ firebase.initializeApp(config);
 
 
 //definition of var values that will be stored in firebase
-var playlistURL =[]
-var trackName =[]
-var artistName =[]
+
 var album =[]
-var year =[]
+var author =[]
+var title =[]
+var description =[]
 var database = firebase.database()
 var a = '/connections_' + Math.floor(Math.random() * 1000)
 //console.log("random : " + a)
@@ -26,29 +26,28 @@ var result;
 var currTrack = "";
 var currArtist = "";
 
-// getCharts();
+//Nws api that gives us the latest and trending topics about artists as it plays their tracks
+// getBiz();
 
-// function getCharts(){
+// function getBiz(){
 //    $.ajax({
 //     headers : {"Access-Control-Allow-Methods": "GET, POST, PATCH, PUT, DELETE, OPTIONS"},
-//     url :  "https://api.musixmatch.com/ws/1.1/chart.tracks.get?chart_name=top&page=1&page_size=10&country=us&f_has_lyrics=1&apikey=2538b3b1d406a3ddd6b776c21163d924",
+//     url :  "https://newsapi.org/v2/everything?q=bitcoin&apiKey=87a7a20aa21946feb272aaf4f7347402",
 //     method: "GET"
 
 //   }).then(function(response){
 //     var respObject = JSON.parse(response)
-//     var size = respObject.message.body.track_list.length;
+//     var size = respObject.message.body.source.length;
 //     $('#chartsValues').empty()
 //     for(var i=0; i < size; i++){
-//       var trackName = respObject.message.body.track_list[i].track.track_name;
-//       var album_name = respObject.message.body.track_list[i].track.album_name;
-//        var artist_name = respObject.message.body.track_list[i].track.artist_name;
+//       var author = respObject.message.body.source[i].news.author;
+//       var title = respObject.message.body.source[i].news.title;
+//        var description = respObject.message.body.source[i].description;
 
-//        $("#chartsValues").append(("<tr> " +
-//    " <td > " + trackName +" </td> "+
-//    " <td> " + artist_name +" </td> "+
-//    " <td> " + album_name +" </td> "
+//        $("#BizValues").append('playDiv'
 //    ));
 //     }
+
 
 //grabbing the artist and song from html
 
