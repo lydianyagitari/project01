@@ -10,9 +10,12 @@ var config = {
 firebase.initializeApp(config);
 
 
-var playlistId = []
-var playlistURL = []
-var year = []
+//definition of var values that will be stored in firebase
+var playlistURL =[]
+var trackName =[]
+var artistName =[]
+var album =[]
+var year =[]
 var database = firebase.database()
 var a = '/connections_' + Math.floor(Math.random() * 1000)
 //console.log("random : " + a)
@@ -101,6 +104,8 @@ function playMusic(result, mp3Path) {
 function music(mp3path) {
   $('#playDiv').empty()
   // the audio control tag and source  
+
+  
   $('#playDiv').append(
     "<audio id='myAudio' controls autoplay><source src='" + mp3path + "' type='audio/mpeg'></audio>"
   )
