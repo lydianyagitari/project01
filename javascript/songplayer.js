@@ -14,8 +14,8 @@ firebase.initializeApp(config);
 
 var album =[]
 var author =[]
+var source =[]
 var title =[]
-var description =[]
 var database = firebase.database()
 var a = '/connections_' + Math.floor(Math.random() * 1000)
 //console.log("random : " + a)
@@ -141,6 +141,9 @@ function writeUserData(playlistURL, trackName, artist, album) {
     trackName: trackName,
     artist: artist,
     album: album,
+    author: author,
+    source: source,
+    title: title,    
   })
 };
 
