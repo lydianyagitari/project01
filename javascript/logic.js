@@ -26,7 +26,7 @@ var result;
 var currTrack = "";
 var currArtist = "";
 
-// getCharts();
+// getCharts();  https://umn.bootcampcontent.com/University-of-Minnesota-Boot-Camp/MINSTP201808FSF4/blob/master/01-Class-Content/06-ajax/01-Activities/11-BandsInTownApp/Solved/bands-in-town-solved.html
 
 // function getCharts(){
 //    $.ajax({
@@ -58,6 +58,7 @@ $("#add").on("click", function (event) {
   var artist = $("#inputArtist").val()
   var song = $("#inputSong").val()
   var deezerApi;
+  // var musicMatchApi;
   var flag = 0
   if (artist === "" && song === "") {
     // console.log("no input")
@@ -66,20 +67,23 @@ $("#add").on("click", function (event) {
   else if (artist === "") {
     // console.log("song only")
     deezerApi = "https://api.deezer.com/search?q=track:" + '"' + song + '"'
-
+    //musicMatchApi =http://api.musixmatch.com/ws/1.1/track.search?q_artist=track: " + '"' + song + '"'
   }
   else if (song === "") {
     // console.log("artist only")
     deezerApi = "https://api.deezer.com/search?q=artist:" + '"' + artist + '"'
+    //musicMatchApi =http://api.musixmatch.com/ws/1.1/track.search?q_artist: " + '"' + artist + '"'
   }
   else {
     // console.log("song & artist")
     // console.log("artist : " + artist)
     // console.log("song : " + song)
     deezerApi = "https://api.deezer.com/search?q=artist:" + '"' + artist + '"' + " track:" + '"' + song + '"'
+    //musicMatchApi = http://api.musixmatch.com/ws/1.1/track.search?q_artist: " + '"' + artist + '"' + " track:" + '"' + song + '"'
   }
   //console.log(deezerApi)
   play(deezerApi, flag)
+  //play(musicMatchApi, flag)
 
 })
 
@@ -89,13 +93,16 @@ function play(a, flag) {
 
 
   var deezerApi = a
+  //var musicMatchApi = a
   console.log("play: " + deezerApi)
+  //console.log("play: " + musicMatchApi)
   var flag = flag;
   console.log(flag)
 
   $.ajax({
     headers: { "Access-Control-Allow-Methods": "GET, POST, PATCH, PUT, DELETE, OPTIONS" },
     url: deezerApi,
+    //url : musicMatchApi,
     method: "GET"
 
   }).then(function (response) {
