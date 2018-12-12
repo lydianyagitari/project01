@@ -26,29 +26,42 @@ var result;
 var currTrack = "";
 var currArtist = "";
 
-// getCharts();  https://umn.bootcampcontent.com/University-of-Minnesota-Boot-Camp/MINSTP201808FSF4/blob/master/01-Class-Content/06-ajax/01-Activities/11-BandsInTownApp/Solved/bands-in-town-solved.html
+ function searchBandsInTown(artist) {
 
-// function getCharts(){
-//    $.ajax({
-//     headers : {"Access-Control-Allow-Methods": "GET, POST, PATCH, PUT, DELETE, OPTIONS"},
-//     url :  "https://api.musixmatch.com/ws/1.1/chart.tracks.get?chart_name=top&page=1&page_size=10&country=us&f_has_lyrics=1&apikey=2538b3b1d406a3ddd6b776c21163d924",
-//     method: "GET"
+    // Querying the bandsintown api for the selected artist, the ?app_id parameter is required, but can equal anything
+    var queryURL = "https://rest.bandsintown.com/artists/" + artist + "?app_id=codingbootcamp";
+    $.ajax({
+      url: queryURL,
+      method: "GET"
+    }).then(function(response) {
 
-//   }).then(function(response){
-//     var respObject = JSON.parse(response)
-//     var size = respObject.message.body.track_list.length;
-//     $('#chartsValues').empty()
-//     for(var i=0; i < size; i++){
-//       var trackName = respObject.message.body.track_list[i].track.track_name;
-//       var album_name = respObject.message.body.track_list[i].track.album_name;
-//        var artist_name = respObject.message.body.track_list[i].track.artist_name;
+      // Printing the entire object to console
+      console.log(response);
 
-//        $("#chartsValues").append(("<tr> " +
-//    " <td > " + trackName +" </td> "+
-//    " <td> " + artist_name +" </td> "+
-//    " <td> " + album_name +" </td> "
-//    ));
-//     }
+      // Constructing HTML containing the artist information
+      var artistName = $("<h1>").text(response.name);
+      var artistURL = $("<a>").attr("href", response.url).append(artistName);
+      var artistImage = $("<img>").attr("src", response.thumb_url);
+      var trackerCount = $("<h2>").text(response.tracker_count + " fans tracking this artist");
+      var upcomingEvents = $("<h2>").text(response.upcoming_event_count + " upcoming events");
+      var goToArtist = $("<a>").attr("href", response.url).text("See Tour Dates");
+
+      // Empty the contents of the artist-div, append the new artist content
+      $("#artist-div").empty();
+      $("#artist-div").append(artistURL, artistImage, trackerCount, upcomingEvents, goToArtist);
+    });
+  }
+
+  // Event handler for user clicking the select-artist button
+  $("#select-artist").on("click", function(event) {
+    // Preventing the button from trying to submit the form
+    event.preventDefault();
+    // Storing the artist name
+    var inputArtist = $("#artist-input").val().trim();
+
+    // Running the searchBandsInTown function(passing in the artist as an argument)
+    searchBandsInTown(inputArtist);
+  });
 
 //grabbing the artist and song from html
 
@@ -58,7 +71,7 @@ $("#add").on("click", function (event) {
   var artist = $("#inputArtist").val()
   var song = $("#inputSong").val()
   var deezerApi;
-  // var musicMatchApi;
+  //var musicMatchApi;
   var flag = 0
   if (artist === "" && song === "") {
     // console.log("no input")
@@ -67,19 +80,19 @@ $("#add").on("click", function (event) {
   else if (artist === "") {
     // console.log("song only")
     deezerApi = "https://api.deezer.com/search?q=track:" + '"' + song + '"'
-    //musicMatchApi =http://api.musixmatch.com/ws/1.1/track.search?q_artist=track: " + '"' + song + '"'
+    //musicMatchApi ="http:api.musixmatch.com/ws/1.1/track.search?q_artist=track: " + '"' + song + '"'
   }
   else if (song === "") {
     // console.log("artist only")
     deezerApi = "https://api.deezer.com/search?q=artist:" + '"' + artist + '"'
-    //musicMatchApi =http://api.musixmatch.com/ws/1.1/track.search?q_artist: " + '"' + artist + '"'
+    //musicMatchApi ="http://api.musixmatch.com/ws/1.1/track.search?q_artist: " + '"' + artist + '"'
   }
   else {
     // console.log("song & artist")
     // console.log("artist : " + artist)
     // console.log("song : " + song)
     deezerApi = "https://api.deezer.com/search?q=artist:" + '"' + artist + '"' + " track:" + '"' + song + '"'
-    //musicMatchApi = http://api.musixmatch.com/ws/1.1/track.search?q_artist: " + '"' + artist + '"' + " track:" + '"' + song + '"'
+    //musicMatchApi = "http://api.musixmatch.com/ws/1.1/track.search?q_artist: " + '"' + artist + '"' + " track:" + '"' + song + '"'
   }
   //console.log(deezerApi)
   play(deezerApi, flag)
