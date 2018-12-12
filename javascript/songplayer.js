@@ -11,11 +11,11 @@ firebase.initializeApp(config);
 
 
 //definition of var values that will be stored in firebase
-var playlistURL =[]
+var artistURL =[]
 var trackName =[]
 var artistName =[]
-var album =[]
-var year =[]
+var upcomingEvents =[]
+var goToArtist =[]
 var database = firebase.database()
 var a = '/connections_' + Math.floor(Math.random() * 1000)
 //console.log("random : " + a)
@@ -26,7 +26,8 @@ var result;
 var currTrack = "";
 var currArtist = "";
 
- function searchBandsInTown(artist) {
+//this function runs the api that shows us artist upcoming events, number of fans and shows us artist image
+ function showBiz(artist) {
 
     // Querying the bandsintown api for the selected artist, the ?app_id parameter is required, but can equal anything
     var queryURL = "https://rest.bandsintown.com/artists/" + artist + "?app_id=codingbootcamp";
@@ -46,21 +47,21 @@ var currArtist = "";
       var upcomingEvents = $("<h2>").text(response.upcoming_event_count + " upcoming events");
       var goToArtist = $("<a>").attr("href", response.url).text("See Tour Dates");
 
-      // Empty the contents of the artist-div, append the new artist content
-      $("#artist-div").empty();
-      $("#artist-div").append(artistURL, artistImage, trackerCount, upcomingEvents, goToArtist);
+      // Empty the contents of the musicdiv, append the new artist content
+      $("#musicDiv").empty();
+      $("#musicDiv").append(artistURL, artistImage, trackerCount, upcomingEvents, goToArtist);
     });
   }
 
-  // Event handler for user clicking the select-artist button
-  $("#select-artist").on("click", function(event) {
+  // Event handler for user clicking the add button
+  $("#add").on("click", function(event) {
     // Preventing the button from trying to submit the form
     event.preventDefault();
     // Storing the artist name
-    var inputArtist = $("#artist-input").val().trim();
+    var inputArtist = $("#inputArtist").val().trim();
 
-    // Running the searchBandsInTown function(passing in the artist as an argument)
-    searchBandsInTown(inputArtist);
+    // Running the showBiz function(passing in the artist as an argument)
+    showBiz(inputArtist);
   });
 
 //grabbing the artist and song from html
@@ -146,11 +147,11 @@ function playMusic(result, mp3Path) {
 };
 //function that will insert media player into html
 function music(mp3path) {
-  $('#playDiv').empty()
+  $('#musicDiv').empty()
   // the audio control tag and source  
 
   
-  $('#playDiv').append(
+  $('#musicDiv').append(
     "<audio id='myAudio' controls autoplay><source src='" + mp3path + "' type='audio/mpeg'></audio>"
   )
 }
