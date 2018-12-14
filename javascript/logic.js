@@ -113,6 +113,7 @@ function play(a, flag) {
   console.log(flag)
 
   $.ajax({
+    //include the following headers because of CORS policy
     headers: { "Access-Control-Allow-Methods": "GET, POST, PATCH, PUT, DELETE, OPTIONS" },
     url: deezerApi,
     //url : musicMatchApi,
